@@ -8,20 +8,15 @@
 
 <ion-content padding>
 
-
-  <ion-list>
-    <button ion-item *ngFor="let pokemon of allPokemon$ | async" (click)="openDetail(pokemon)" >
-      <ion-thumbnail item-start>
-        <img class="thumbnail" src="assets/images/pokemon_{{pokemon.id}}.png" alt="{{pokemon.id}}">
+  <ion-list [virtualScroll]="allPokemon$ | async">
+    <ion-item *virtualItem="let pokemon" (click)="openDetail(pokemon)">
+      <ion-thumbnail item-start="">
+        <img class="thumbnail" item-start src="assets/images/pokemon_{{pokemon.id}}.png" alt="#{{pokemon.id}}">
       </ion-thumbnail>
 
       # {{ pokemon.id }} - {{pokemon.name}}
-
-    </button>
+    </ion-item>
   </ion-list>
 
-  <pre>
-
-  </pre>
 
 </ion-content>
